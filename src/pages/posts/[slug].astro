@@ -1,0 +1,41 @@
+---
+import { client } from "../../lib/contentful";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import marked from "marked";
+import { Debug } from "astro:components";
+
+const { slug } = Astro.params;
+let post;
+let longContent;
+
+try {
+  post = await client.getSinglePost(slug);
+} catch (error) {
+  return Astro.redirect("/404");
+}
+
+if (post && post.longContent) longContent = marked.parse(post.longContent);
+---
+
+<Layout title={`Post | ${post?.id}`}>
+  <Header />
+  <section
+    class="px-2 sm:px-12 mb-8 max-w-[700px] flex flex-col gap-y-8"
+    transition:animate="fade"
+  >
+    <img
+      src={post?.image?.url}
+      class="h-full w-full max-h-[150px] object-cover object-center rounded-tl-md rounded-tr-md mx-auto"
+      transition:name={`post-${post?.id}`}
+    />
+    <p class="text-center italic text-xs">Thoughts and opinions are my own</p>
+    <h1 class="text-2xl">
+      {post?.title}
+    </h1>
+    <article
+      set:html={longContent}
+      class="leading-loose text-white text-justify"
+    />
+  </section>
+</Layout>
