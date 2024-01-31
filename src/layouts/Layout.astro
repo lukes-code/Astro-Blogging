@@ -13,8 +13,8 @@ import { ViewTransitions } from "astro:transitions";
     <title>{title}</title>
     <ViewTransitions />
   </head>
-  <body class="flex flex-col h-screen">
-    <main class="pt-12 mx-auto flex-grow">
+  <body class="flex flex-col h-screen" transition:animate="none">
+    <main class="flex-grow">
       <slot />
     </main>
   </body>
