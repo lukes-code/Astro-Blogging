@@ -14,30 +14,7 @@ async function apiCall(query, variables) {
   return await fetch(fetchUrl, options)
 }
 
-async function getAllBooks() {
-
-  const query = `
-    {
-        bookReferencePageCollection {
-          items {
-            sys {
-                id
-            }
-            title
-            author {
-              name
-            }
-            coverImage {
-              url
-            }
-          }
-        }
-      }`;
-  const response = await apiCall(query);
-  const json = await response.json()
-  return await json.data.bookReferencePageCollection.items;
-}
-
+// Get all blog posts from Contentful
 async function getAllBlogPosts() {
 
   const query = `
@@ -60,34 +37,7 @@ async function getAllBlogPosts() {
   return await json.data.blogPostCollection.items;
 }
 
-async function getSingleBook(id) {
-  const query = `
-    query ($id: String!) {
-        bookReferencePage(id: $id) {
-          title
-          coverImage {
-            url
-          }
-          description {
-            json
-          }
-          author {
-            sys {
-              id
-            }
-            name
-          }
-        }
-      }
-    `;
-  const variables = {
-    id: id
-  };
-  const response = await apiCall(query, variables);
-  const json = await response.json();
-  return await json.data.bookReferencePage
-}
-
+// Get a specific single blog post from Contentful
 async function getSinglePost(id) {
   const query = `
     query ($id: String!) {
@@ -112,35 +62,4 @@ async function getSinglePost(id) {
   return await json.data.blogPost;
 }
 
-
-async function getAuthor(id) {
-  const query = `
-    query ($id: String!) {
-      bookAuthor(id:$id) {
-        name
-        avatar {
-          url
-          description
-        }
-        bio {
-          json
-        }
-        linkedFrom {
-          bookReferencePageCollection {
-            items {
-              title
-            }
-          }
-        }
-      }
-    }
-    `;
-  const variables = {
-    id: id
-  };
-  const response = await apiCall(query, variables);
-  const json = await response.json();
-  return await json.data.bookAuthor
-}
-
-export const client = { getAllBooks, getAllBlogPosts, getSinglePost, getSingleBook, getAuthor }
+export const client = { getAllBlogPosts, getSinglePost }
