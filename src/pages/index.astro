@@ -18,6 +18,7 @@ type Post = {
 };
 
 const posts = await client.getAllBlogPosts();
+const portfolio = await client.getAllPortfolioPosts();
 ---
 
 <Layout title="lukes-code">
@@ -27,7 +28,18 @@ const posts = await client.getAllBlogPosts();
   </h2>
   <section class="container mx-auto mt-4">
     <DragScroll>
-      {posts.map((post: Post, key: number) => <Post key={key} post={post} />)}
+      {
+        posts.map((post: Post, key: number) => (
+          <Post key={key} post={post} page="posts" />
+        ))
+      }
+    </DragScroll>
+    <DragScroll>
+      {
+        portfolio.map((portfolio: Post, key: number) => (
+          <Post key={key} post={portfolio} page="portfolio" />
+        ))
+      }
     </DragScroll>
   </section>
 </Layout>

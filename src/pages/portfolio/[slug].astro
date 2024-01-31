@@ -9,7 +9,7 @@ let post;
 let longContent;
 
 try {
-  post = await client.getSingleBlogPost(slug);
+  post = await client.getSinglePortfolioPost(slug);
 } catch (error) {
   return Astro.redirect("/404");
 }

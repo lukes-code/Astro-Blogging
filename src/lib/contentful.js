@@ -26,6 +26,7 @@ async function getAllBlogPosts() {
             url
           },
           id,
+          date,
           sys {
             id
           }
@@ -37,14 +38,39 @@ async function getAllBlogPosts() {
   return await json.data.blogPostCollection.items;
 }
 
+// Get all portfolio posts from Contentful
+async function getAllPortfolioPosts() {
+
+  const query = `
+    {
+      portfolioCollection {
+        items {
+          title,
+          image {
+            url
+          },
+          id,
+          date,
+          sys {
+            id
+          }
+        }
+      }
+    }`;
+  const response = await apiCall(query);
+  const json = await response.json()
+  return await json.data.portfolioCollection.items;
+}
+
 // Get a specific single blog post from Contentful
-async function getSinglePost(id) {
+async function getSingleBlogPost(id) {
   const query = `
     query ($id: String!) {
         blogPost(id: $id) {
           title,
           longContent,
           id,
+          date
           image {
             url
           }
@@ -62,4 +88,30 @@ async function getSinglePost(id) {
   return await json.data.blogPost;
 }
 
-export const client = { getAllBlogPosts, getSinglePost }
+// Get a specific single portfolio post from Contentful
+async function getSinglePortfolioPost(id) {
+  const query = `
+    query ($id: String!) {
+        portfolio(id: $id) {
+          title,
+          longContent,
+          id,
+          date,
+          image {
+            url
+          }
+          sys {
+            id
+          }
+        }
+      }
+    `;
+  const variables = {
+    id: id
+  };
+  const response = await apiCall(query, variables);
+  const json = await response.json();
+  return await json.data.portfolio;
+}
+
+export const client = { getAllBlogPosts, getSingleBlogPost, getAllPortfolioPosts, getSinglePortfolioPost }

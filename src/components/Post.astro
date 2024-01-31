@@ -1,11 +1,11 @@
 ---
 import DragScrollItem from "../components/DragScrollItem.astro";
 
-const { post } = Astro.props;
+const { post, page } = Astro.props;
 ---
 
 <DragScrollItem>
-  <a href={`posts/${post.sys.id}`} class="min-w-[300px] max-w-[300px]">
+  <a href={`${page}/${post.sys.id}`} class="min-w-[300px] max-w-[300px]">
     <div class="aspect-h-1 aspect-w-1 w-full">
       <img
         src={post.image.url}
