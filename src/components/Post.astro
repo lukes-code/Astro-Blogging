@@ -1,23 +1,17 @@
 ---
-import { Debug } from "astro:components";
-
 const { post } = Astro.props;
 ---
 
-<li class="mt-4">
-  <a href={`posts/${post.sys.id}`} class="group">
-    <div
-      class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-tl-md rounded-tr-md bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
-    >
-      <img
-        src={post.image.url}
-        class="h-full w-full object-cover object-center group-hover:opacity-75"
-        transition:name={`image-${post.id}`}
-        alt={`blog post number ${post.id}`}
-      />
-    </div>
-    <h3 class="mt-4 text-lg text-white" transition:name={`title-${post.id}`}>
-      {post.title}
-    </h3>
-  </a>
-</li>
+<a href={`posts/${post.sys.id}`} class="group">
+  <div class="aspect-h-1 aspect-w-1 w-full">
+    <img
+      src={post.image.url}
+      class="h-full w-full rounded-tl-md rounded-tr-md"
+      transition:name={`image-${post.id}`}
+      alt={`blog post number ${post.id}`}
+    />
+  </div>
+  <h3 class="mt-4 text-lg text-white" transition:name={`title-${post.id}`}>
+    {post.title}
+  </h3>
+</a>

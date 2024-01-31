@@ -2,7 +2,6 @@
 import { client } from "../lib/contentful";
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
-import { Image } from "astro:assets";
 import Post from "../components/Post.astro";
 
 type Post = {
@@ -25,10 +24,10 @@ const posts = await client.getAllBlogPosts();
     A blog built with Astro, Contentful, and TailwindCSS
   </h2>
   <section class="container mx-auto mt-4">
-    <ul
-      class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8"
+    <div
+      class="mt-4 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8"
     >
       {posts.map((post: Post) => <Post key={post.sys.id} post={post} />)}
-    </ul>
+    </div>
   </section>
 </Layout>

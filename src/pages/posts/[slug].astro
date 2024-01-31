@@ -25,7 +25,7 @@ if (post?.longContent) longContent = marked.parse(post.longContent);
   >
     <img
       src={post?.image?.url}
-      class="h-full w-full max-h-[150px] object-cover object-center rounded-tl-md rounded-tr-md mx-auto"
+      class="h-full w-full max-h-[150px] rounded-tl-md rounded-tr-md"
       transition:name={`image-${post.id}`}
       alt={`blog post number ${post.id}`}
     />
