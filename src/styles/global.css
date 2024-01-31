@@ -8,3 +8,10 @@ body {
 body {
   background-color: #111;
 }
+
+/* draggable scroller */
+.active-scroll {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+  transform: scale(1);
+}

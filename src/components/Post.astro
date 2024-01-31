@@ -1,17 +1,24 @@
 ---
+import DragScrollItem from "../components/DragScrollItem.astro";
+
 const { post } = Astro.props;
 ---
 
-<a href={`posts/${post.sys.id}`} class="group">
-  <div class="aspect-h-1 aspect-w-1 w-full">
-    <img
-      src={post.image.url}
-      class="h-full w-full rounded-tl-md rounded-tr-md"
-      transition:name={`image-${post.id}`}
-      alt={`blog post number ${post.id}`}
-    />
-  </div>
-  <h3 class="mt-4 text-lg text-white" transition:name={`title-${post.id}`}>
-    {post.title}
-  </h3>
-</a>
+<DragScrollItem>
+  <a href={`posts/${post.sys.id}`} class="min-w-[300px] max-w-[300px]">
+    <div class="aspect-h-1 aspect-w-1 w-full">
+      <img
+        src={post.image.url}
+        class="h-full w-full rounded-tl-md rounded-tr-md"
+        transition:name={`image-${post.id}`}
+        alt={`blog post number ${post.id}`}
+      />
+    </div>
+    <h3
+      class="mt-4 text-lg text-white truncate"
+      transition:name={`title-${post.id}`}
+    >
+      {post.title}
+    </h3>
+  </a>
+</DragScrollItem>
