@@ -1,14 +1,13 @@
 ---
 import { client } from "../lib/contentful";
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
 import Post from "../components/Post.astro";
 import "../styles/global.css";
 import DragScroll from "../components/DragScroll.astro";
 import Title from "../components/Title.astro";
 
 type Post = {
-  id: number;
+  id: string;
   title: string;
   image: {
     url: string;

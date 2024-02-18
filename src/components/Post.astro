@@ -2,6 +2,7 @@
 import DragScrollItem from "../components/DragScrollItem.astro";
 
 const { post, page } = Astro.props;
+export const prerender = false;
 ---
 
 <DragScrollItem>
@@ -11,6 +12,7 @@ const { post, page } = Astro.props;
         src={post.image.url}
         class="h-full w-full rounded-tl-md rounded-tr-md"
         alt={`blog post number ${post.id}`}
+        transition:name={`image-${post.title}`}
       />
     </div>
     <h3 class="mt-4 text-lg text-white truncate">

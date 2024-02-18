@@ -1,4 +1,5 @@
 ---
+import { fade } from "astro:transitions";
 import Title from "../components/Title.astro";
 import * as marked from "marked";
 
@@ -11,11 +12,14 @@ if (post?.longContent) longContent = marked.parse(post.longContent);
 <Title title="THE POST" />
 <section
   class="mx-auto px-2 sm:px-12 my-16 max-w-[700px] flex flex-col gap-y-8"
+  transition:animate={fade({ duration: "0.5s" })}
 >
   <img
     src={post?.image?.url}
     class="h-full w-full max-h-[150px] rounded-tl-md rounded-tr-md"
     alt={`blog post number ${post.id}`}
+    data-astro-reload
+    transition:name={`image-${post.title}`}
   />
   <p class="text-center italic text-xs">Thoughts and opinions are my own</p>
   <h1 class="text-2xl">
@@ -26,5 +30,3 @@ if (post?.longContent) longContent = marked.parse(post.longContent);
     class="leading-loose text-white text-justify"
   />
 </section>
-
-<!-- <h1 class="text-2xl" transition:name={`title-${post.id}`}> -->
