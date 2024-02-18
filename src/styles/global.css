@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap");
+
 html,
 body {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -14,4 +16,20 @@ body {
   cursor: grabbing;
   cursor: -webkit-grabbing;
   transform: scale(1);
+}
+
+/* gradient */
+.gradient {
+  background: rgb(63, 94, 251);
+  background: linear-gradient(
+    90deg,
+    rgba(63, 94, 251, 1) 0%,
+    rgba(252, 70, 107, 1) 100%
+  );
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #333;
 }

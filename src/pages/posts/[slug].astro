@@ -1,41 +1,18 @@
 ---
 import { client } from "../../lib/contentful";
 import Layout from "../../layouts/Layout.astro";
-import Header from "../../components/Header.astro";
-import * as marked from "marked";
+import PostLayout from "../../layouts/PostLayout.astro";
 
 const { slug } = Astro.params;
 let post;
-let longContent;
 
 try {
   post = await client.getSingleBlogPost(slug);
 } catch (error) {
   return Astro.redirect("/404");
 }
-
-if (post?.longContent) longContent = marked.parse(post.longContent);
 ---
 
 <Layout title={`Post | ${post.id}`}>
-  <Header transition:persist />
-  <section
-    class="mx-auto px-2 sm:px-12 mb-8 max-w-[700px] flex flex-col gap-y-8"
-    transition:animate="fade"
-  >
-    <img
-      src={post?.image?.url}
-      class="h-full w-full max-h-[150px] rounded-tl-md rounded-tr-md"
-      transition:name={`image-${post.id}`}
-      alt={`blog post number ${post.id}`}
-    />
-    <p class="text-center italic text-xs">Thoughts and opinions are my own</p>
-    <h1 class="text-2xl" transition:name={`title-${post.id}`}>
-      {post?.title}
-    </h1>
-    <article
-      set:html={longContent}
-      class="leading-loose text-white text-justify"
-    />
-  </section>
+  <PostLayout post={post} />
 </Layout>

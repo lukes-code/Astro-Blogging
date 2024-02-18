@@ -5,6 +5,7 @@ import Header from "../components/Header.astro";
 import Post from "../components/Post.astro";
 import "../styles/global.css";
 import DragScroll from "../components/DragScroll.astro";
+import Title from "../components/Title.astro";
 
 type Post = {
   id: number;
@@ -22,12 +23,8 @@ const portfolio = await client.getAllPortfolioPosts();
 ---
 
 <Layout title="lukes-code">
-  <Header transition:persist />
-  <h2 class="text-base text-center text-white px-2">
-    A blog built with Astro, Contentful, and TailwindCSS
-  </h2>
+  <Title title="THE BLOG" />
   <section class="ml-8 sm:md-4 mt-16">
-    <h5 class="text-2xl font-bold text-white mx-4">Posts</h5>
     <DragScroll>
       {
         posts.map((post: Post, key: number) => (

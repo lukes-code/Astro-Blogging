@@ -10,14 +10,10 @@ const { post, page } = Astro.props;
       <img
         src={post.image.url}
         class="h-full w-full rounded-tl-md rounded-tr-md"
-        transition:name={`image-${post.id}`}
         alt={`blog post number ${post.id}`}
       />
     </div>
-    <h3
-      class="mt-4 text-lg text-white truncate"
-      transition:name={`title-${post.id}`}
-    >
+    <h3 class="mt-4 text-lg text-white truncate">
       {post.title}
     </h3>
   </a>
