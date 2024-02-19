@@ -18,6 +18,7 @@ const { post, page } = Astro.props;
         loading="lazy"
         decoding="async"
         quality={"mid"}
+        transition:name={`image-${post.title}`}
       />
     </div>
     <h3 class="mt-4 text-lg text-white truncate">
