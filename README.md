@@ -1,6 +1,6 @@
 # Astro Blogging :star:
 
-[https://vacant-sea.vercel.app/](https://lukes-code-blog.netlify.app/)
+https://lukes-code-blog.netlify.app/ 
 
 Requires API key to run locally, alternatively please see the video or prod link.
 
