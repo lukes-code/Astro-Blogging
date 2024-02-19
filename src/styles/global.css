@@ -1,5 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap");
 
+@font-face {
+  font-family: "Poppins";
+  src: url("/public/fonts/Poppins-ExtraBold.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 html,
 body {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
